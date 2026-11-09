@@ -1,0 +1,2 @@
+aiogram>=3.13,<4
+gspread>=6.1,<7

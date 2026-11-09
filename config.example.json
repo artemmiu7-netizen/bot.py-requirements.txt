@@ -1,0 +1,20 @@
+{
+  "persons": {
+    "umid": {
+      "title": "Умид",
+      "spreadsheet_id": "ВСТАВЬТЕ_ID_ТАБЛИЦЫ_УМИДА",
+      "institutions": {
+        "school1": "Школа №1",
+        "lyceum5": "Лицей №5",
+        "college": "Колледж связи"
+      }
+    },
+    "aziz": {
+      "title": "Азиз",
+      "spreadsheet_id": "ВСТАВЬТЕ_ID_ТАБЛИЦЫ_АЗИЗА",
+      "institutions": {
+        "school12": "Школа №12"
+      }
+    }
+  }
+}
