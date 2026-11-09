@@ -232,11 +232,17 @@ async def on_contact(message: Message) -> None:
 
 @dp.message(Command("links"))
 async def on_links(message: Message, bot: Bot) -> None:
-    """Ссылки на все УЗ, сгруппированные по людям (только для админов)."""
-    if message.from_user.id not in ADMIN_IDS:
+    """Админ получает ссылки всех людей, человек из конфига — только свои."""
+    uid = message.from_user.id
+    is_admin = uid in ADMIN_IDS
+    visible = {
+        p: cfg for p, cfg in persons.items()
+        if is_admin or uid in cfg.get("telegram_ids", [])
+    }
+    if not visible:
         return
     me = await bot.get_me()
-    for person, cfg in persons.items():
+    for person, cfg in visible.items():
         lines = [f"<b>{cfg['title']}</b>"]
         for inst, title in cfg["institutions"].items():
             lines.append(f"{title}:\nhttps://t.me/{me.username}?start={person}{SEP}{inst}")
